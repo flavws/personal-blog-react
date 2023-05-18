@@ -1,0 +1,12 @@
+.title-logo{
+    text-transform: uppercase;
+}
+
+.navbar{
+    background-color: #fcacd1;
+}
+
+.nav-items{
+    color: white;
+    padding: 0 10px;
+}
