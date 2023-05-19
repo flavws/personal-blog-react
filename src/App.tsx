@@ -5,6 +5,7 @@ import "./App.css";
 import Navbar from "./components/statics/navbar/Navbar";
 import Footer from "./components/statics/footer/Footer";
 import Home from "./pages/home/Home";
+import Login from "./pages/login/Login";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -14,6 +15,8 @@ function App() {
       <Navbar />
       <div style={{ minHeight: "100vh" }}>
         <Routes>
+          <Route path="/" element={<Login />}/>
+          <Route path="/login" element={<Login />}/>
           <Route path="/home" element={<Home />}/>
         </Routes>
       </div>
