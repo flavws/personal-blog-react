@@ -15,10 +15,11 @@ import {
 } from "@mui/material";
 import AdbIcon from "@mui/icons-material/Adb";
 import MenuIcon from "@mui/icons-material/Menu";
+import {Link} from "react-router-dom";
 import "./Navbar.css";
 
-const pages = ["Home", "Postagens", "Temas", "Cadastrar Tema"];
-const settings = ["Perfil", "Conta", "Dashboard", "Logout"];
+const pages = ["home", "postagens", "temas", "cadastrar tema"];
+const settings = ["perfil", "conta", "dashboard", "logout"];
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -164,7 +165,11 @@ function Navbar() {
               >
                 {settings.map((setting) => (
                   <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
+                    <Typography textAlign="center" style={{textTransform: 'uppercase'}}>
+                    <Link to={`/${setting}`} className="settings-menu">
+                      {setting}
+                    </Link>
+                    </Typography>
                   </MenuItem>
                 ))}
               </Menu>
