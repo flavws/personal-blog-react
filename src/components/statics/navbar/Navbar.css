@@ -1,18 +1,29 @@
-.title-logo{
-    text-transform: uppercase;
+.title-logo {
+  text-transform: uppercase;
 }
 
-.navbar{
-    background-color: #fcacd1;
+.navbar {
+  background-color: #ff93b3 !important;
+  z-index: 10 !important;
 }
 
-.nav-items{
-    color: white;
-    padding: 0 10px;
+.nav-items {
+  color: white;
+  padding: 0 10px;
 }
 
-.settings-menu{
-    color: #fcacd1;
-    font-size: 14px;
-    text-decoration: none;
+.settings-menu {
+  color: #fcacd1;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.button-logout {
+  color: white !important;
+  border: 1px solid white !important;
+}
+
+.button-logout:hover{
+    background-color: white !important;
+    color: #fcacd1 !important;
 }
