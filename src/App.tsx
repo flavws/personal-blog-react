@@ -7,6 +7,8 @@ import Footer from "./components/statics/footer/Footer";
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import CadastroUsuario from "./pages/cadastroUsuario/CadastroUsuario";
+import ListaTema from "./components/statics/themes/listaTema/ListaTema";
+import ListaPostagem from "./components/statics/posts/listaPostagem/ListaPostagem";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -21,6 +23,8 @@ function App() {
           <Route path="/logout" element={<Login />}/>
           <Route path="/home" element={<Home />}/>
           <Route path="/cadastrousuario" element={<CadastroUsuario />}/>
+          <Route path="/temas" element={<ListaTema />}/>
+          <Route path="/posts" element={<ListaPostagem />}/>
         </Routes>
       </div>
       <Footer />
