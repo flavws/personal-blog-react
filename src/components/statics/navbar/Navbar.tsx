@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -15,117 +16,69 @@ import {
 } from "@mui/material";
 import AdbIcon from "@mui/icons-material/Adb";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
+import useLocalStorage from "react-use-localstorage";
 
 const pages = ["home", "postagens", "temas", "cadastrar tema"];
 
 function Navbar() {
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-    null
-  );
+  const [token, setToken] = useLocalStorage("token");
+  let navigate = useNavigate();
 
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
+  function goLogout() {
+    setToken("");
+    alert("Usuário deslogado");
+    navigate("/login");
+  }
 
   return (
     <>
-      <AppBar position="static">
-        <Container maxWidth="xl" className="navbar">
-          <Toolbar disableGutters>
-            <Typography
-              className="title-logo"
-              variant="h6"
-              noWrap
-              component="a"
-              href="/"
-              sx={{
-                mr: 2,
-                display: { xs: "none", md: "flex" },
-                fontFamily: "monospace",
-                fontWeight: 700,
-                letterSpacing: ".3rem",
-                color: "inherit",
-                textDecoration: "none",
-              }}
-            >
+      <AppBar position="static" className="navbar">
+        <Toolbar variant="dense">
+          <Box className="cursor title-logo">
+            <Typography variant="h5" color="inherit">
               MelodicMinds
             </Typography>
+          </Box>
 
-            <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorElNav}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "left",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "left",
-                }}
-                open={Boolean(anchorElNav)}
-                onClose={handleCloseNavMenu}
-                sx={{
-                  display: { xs: "block", md: "none" },
-                }}
-              >
-                {pages.map((page) => (
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{page}</Typography>
-                  </MenuItem>
-                ))}
-              </Menu>
-            </Box>
-            <Typography
-              variant="h5"
-              noWrap
-              component="a"
-              href=""
-              sx={{
-                mr: 2,
-                display: { xs: "flex", md: "none" },
-                flexGrow: 1,
-                fontFamily: "monospace",
-                fontWeight: 700,
-                letterSpacing: ".3rem",
-                color: "inherit",
-                textDecoration: "none",
-              }}
-            >
-              Personal Blog
-            </Typography>
-            <Box
-              sx={{
-                flexGrow: 1,
-                display: { xs: "none", md: "flex" },
-                justifyContent: "center",
-              }}
-            >
-              {pages.map((page) => (
-                <>
-                  <Button
-                    key={page}
-                    onClick={handleCloseNavMenu}
-                    sx={{ my: 2, color: "white", display: "flex" }}
-                  >
-                    <Box className="nav-items">{page}</Box>
-                  </Button>
-                </>
-              ))}
-            </Box>
+          <Box display="flex" justifyContent="start">
+            <Link to="/home" className="text-decorator-none">
+              <Box mx={1} className="cursor nav-items">
+                <Typography variant="h6" color="inherit">
+                  home
+                </Typography>
+              </Box>
+            </Link>
+            <Link to="/posts" className="text-decorator-none">
+              <Box mx={1} className="cursor nav-items">
+                <Typography variant="h6" color="inherit">
+                  postagens
+                </Typography>
+              </Box>
+            </Link>
+            <Link to="/temas" className="text-decorator-none">
+              <Box mx={1} className="cursor nav-items">
+                <Typography variant="h6" color="inherit">
+                  temas
+                </Typography>
+              </Box>
+            </Link>
+            <Link to="/formTheme" className="text-decorator-none">
+              <Box mx={1} className="cursor nav-items">
+                <Typography variant="h6" color="inherit">
+                  cadastrar tema
+                </Typography>
+              </Box>
+            </Link>
 
-            <Box mx={1} style={{ cursor: "pointer" }}>
-              <Link to="/login">
-                <Box mx={1}>
-                  <Button variant="outlined" className="button-logout">logout</Button>
-                </Box>
-              </Link>
+            <Box mx={1} className="cursor nav-items" onClick={goLogout}>
+              <Typography variant="h6" color="inherit">
+                logout
+              </Typography>
             </Box>
-          </Toolbar>
-        </Container>
+          </Box>
+        </Toolbar>
       </AppBar>
     </>
   );

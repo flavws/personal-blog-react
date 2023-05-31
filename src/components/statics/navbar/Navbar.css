@@ -10,20 +10,14 @@
 .nav-items {
   color: white;
   padding: 0 10px;
+  text-transform: uppercase;
 }
 
-.settings-menu {
-  color: #fcacd1;
-  font-size: 14px;
+.cursor{
+  cursor: pointer;
+  color: white;
+}
+
+.text-decorator-none{
   text-decoration: none;
-}
-
-.button-logout {
-  color: white !important;
-  border: 1px solid white !important;
-}
-
-.button-logout:hover{
-    background-color: white !important;
-    color: #fcacd1 !important;
 }
