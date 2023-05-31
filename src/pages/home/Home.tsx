@@ -1,9 +1,23 @@
-import React from "react";
+/* eslint-disable prefer-const */
+import React, { useEffect } from "react";
 import { Grid, Typography, Button, Box } from "@material-ui/core";
 import "./Home.css";
-import TabPostagem from "../../components/statics/posts/tabPostagem/TabPostagem";
+import TabPostagem from "../../components/posts/tabPostagem/TabPostagem";
+import ModalPost from "../../components/posts/modalPostagem/ModalPost";
+import { useNavigate } from "react-router-dom";
+import useLocalStorage from "react-use-localstorage";
+
 
 function Home() {
+  const [token, setToken] = useLocalStorage("token");
+  let navigate = useNavigate();
+  useEffect(() => {
+    if (token == "") {
+      alert("Você precisa estar logado!");
+      navigate("/login");
+    }
+  }, [token]);
+  
   return (
     // <> - fragment
     <>
@@ -32,7 +46,9 @@ function Home() {
             </Typography>
           </Box>
           <Box display="flex" justifyContent="center">
-            <Box marginRight={1}></Box>
+            <Box marginRight={1}>
+              <ModalPost />
+            </Box>
             <Button variant="outlined" size="large">
               <Box className="btn-text">Ver Postagens</Box>
             </Button>

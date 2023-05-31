@@ -9,13 +9,13 @@ import {
   Typography,
 } from "@material-ui/core";
 import { Box } from "@mui/material";
-import "./ListaTema.css";
-import Theme from "../../../../models/Theme";
+import "./ListaPostagem.css";
 import useLocalStorage from "react-use-localstorage";
-import { busca } from "../../../../services/Service";
+import Post from "../../../models/Post";
+import { busca } from "../../../services/Service";
 
-function ListaTema() {
-  const [themes, setThemes] = useState<Theme[]>([]);
+function ListaPostagem() {
+  const [posts, setPosts] = useState<Post[]>([]);
   const [token, setToken] = useLocalStorage("token");
   let navigate = useNavigate();
 
@@ -26,8 +26,8 @@ function ListaTema() {
     }
   }, [token]);
 
-  async function getTema() {
-    await busca("/themes", setThemes, {
+  async function getPostagem() {
+    await busca("/post", setPosts, {
       headers: {
         Authorization: token,
       },
@@ -35,26 +35,31 @@ function ListaTema() {
   }
 
   useEffect(() => {
-    getTema();
-  }, [themes]);
+    getPostagem();
+  }, [posts]);
 
   return (
     <>
-      {
-        themes.map(theme => (
+      {posts.map((post) => (
         <Box m={2}>
           <Card variant="outlined">
             <CardContent>
               <Typography color="textSecondary" gutterBottom>
-                Tema
+                Postagens
               </Typography>
               <Typography variant="h5" component="h2">
-                {theme.description}
+              {post.title}
+              </Typography>
+              <Typography variant="body2" component="p">
+              {post.text}
+              </Typography>
+              <Typography variant="body2" component="p">
+              {post.theme?.description}
               </Typography>
             </CardContent>
             <CardActions>
               <Box display="flex" justifyContent="center" mb={1.5}>
-                <Link to={`/formTheme/${theme.id}`} className="text-decorator-none">
+                <Link to={`/formPost/${post.id}`} className="text-decorator-none">
                   <Box mx={1}>
                     <Button
                       variant="contained"
@@ -66,7 +71,7 @@ function ListaTema() {
                     </Button>
                   </Box>
                 </Link>
-                <Link to={`/deleteTheme/${theme.id}`} className="text-decorator-none">
+                <Link to={`/deletePost/${post.id}`} className="text-decorator-none">
                   <Box mx={1}>
                     <Button variant="contained" size="small" color="secondary">
                       deletar
@@ -77,10 +82,9 @@ function ListaTema() {
             </CardActions>
           </Card>
         </Box>
-      ))
-      }
+      ))}
     </>
   );
 }
 
-export default ListaTema;
+export default ListaPostagem;
