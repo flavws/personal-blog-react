@@ -1160,6 +1160,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/redux@npm:^3.6.0":
+  version: 3.6.31
+  resolution: "@types/redux@npm:3.6.31"
+  checksum: 7bfaa5c5390364d8ba4132033f9887f1c1ed96fda434d3f70be801e0997542a89c03dcd656e3bc8a1ea84bb6450e25e833cf17302dbd9055d6ff0e1f1b4f9a31
+  languageName: node
+  linkType: hard
+
 "@types/scheduler@npm:*":
   version: 0.16.3
   resolution: "@types/scheduler@npm:0.16.3"
@@ -3172,6 +3179,7 @@ __metadata:
     "@mui/material": ^5.0.6
     "@types/react": ^17
     "@types/react-dom": ^17
+    "@types/redux": ^3.6.0
     "@typescript-eslint/eslint-plugin": ^5.57.1
     "@typescript-eslint/parser": ^5.57.1
     "@vitejs/plugin-react": ^4.0.0
@@ -3181,7 +3189,7 @@ __metadata:
     eslint-plugin-react-refresh: ^0.3.4
     react: ^17
     react-dom: ^17
-    react-redux: ^8.0.5
+    react-redux: ^8.0.7
     react-router-dom: 6
     react-use-localstorage: ^3.5.3
     typescript: ^5.0.2
@@ -3311,9 +3319,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-redux@npm:^8.0.5":
-  version: 8.0.5
-  resolution: "react-redux@npm:8.0.5"
+"react-redux@npm:^8.0.7":
+  version: 8.0.7
+  resolution: "react-redux@npm:8.0.7"
   dependencies:
     "@babel/runtime": ^7.12.1
     "@types/hoist-non-react-statics": ^3.3.1
@@ -3322,13 +3330,16 @@ __metadata:
     react-is: ^18.0.0
     use-sync-external-store: ^1.0.0
   peerDependencies:
+    "@reduxjs/toolkit": ^1 || ^2.0.0-beta.0
     "@types/react": ^16.8 || ^17.0 || ^18.0
     "@types/react-dom": ^16.8 || ^17.0 || ^18.0
     react: ^16.8 || ^17.0 || ^18.0
     react-dom: ^16.8 || ^17.0 || ^18.0
     react-native: ">=0.59"
-    redux: ^4
+    redux: ^4 || ^5.0.0-beta.0
   peerDependenciesMeta:
+    "@reduxjs/toolkit":
+      optional: true
     "@types/react":
       optional: true
     "@types/react-dom":
@@ -3339,7 +3350,7 @@ __metadata:
       optional: true
     redux:
       optional: true
-  checksum: a108f4f7ead6ac005e656d46051474a2bbdb31ede481bbbb3d8d779c1a35e1940b8655577cc5021313411864d305f67fc719aa48d6e5ed8288cf9cbe8b7042e4
+  checksum: d903aa79b12154258fd76b8e61fcf56f72123f69c31033b262805646371e23822cd0cd11d24194cda1e03569a7b1bf86e935cd57a9bab4523186804ed2742fac
   languageName: node
   linkType: hard
 
