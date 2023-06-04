@@ -14,7 +14,7 @@ import {
 import "./CadastroPost.css";
 import { useNavigate, useParams } from "react-router-dom";
 import useLocalStorage from "react-use-localstorage";
-import Post from "../../../models/Postagemagem";
+import Post from "../../../models/Postagem";
 import Theme from "../../../models/Theme";
 import { busca, buscaId, put, post } from "../../../services/Service";
 
