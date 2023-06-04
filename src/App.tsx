@@ -15,7 +15,6 @@ import ListaPostagem from "./components/posts/listaPostagem/ListaPostagem";
 import ListaTema from "./components/themes/listaTema/ListaTema";
 
 function App() {
-  const [count, setCount] = useState(0);
 
   return (
     <Router>

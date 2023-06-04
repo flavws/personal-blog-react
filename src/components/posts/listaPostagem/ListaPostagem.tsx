@@ -11,7 +11,7 @@ import {
 import { Box } from "@mui/material";
 import "./ListaPostagem.css";
 import useLocalStorage from "react-use-localstorage";
-import Post from "../../../models/Post";
+import Post from "../../../models/Postagem";
 import { busca } from "../../../services/Service";
 
 function ListaPostagem() {

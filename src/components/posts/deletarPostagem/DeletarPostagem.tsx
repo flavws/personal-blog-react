@@ -4,7 +4,7 @@ import {Typography, Button, Card, CardActions, CardContent } from "@material-ui/
 import {Box} from '@mui/material';
 import './DeletarPostagem.css';
 import useLocalStorage from 'react-use-localstorage';
-import Post from '../../../models/Post';
+import Post from '../../../models/Postagem';
 import { useNavigate, useParams } from 'react-router-dom';
 import { buscaId, deleteId } from '../../../services/Service';
 
