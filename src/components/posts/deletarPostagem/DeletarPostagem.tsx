@@ -4,13 +4,13 @@ import {Typography, Button, Card, CardActions, CardContent } from "@material-ui/
 import {Box} from '@mui/material';
 import './DeletarPostagem.css';
 import useLocalStorage from 'react-use-localstorage';
-import Post from '../../../models/Postagem';
 import { useNavigate, useParams } from 'react-router-dom';
 import { buscaId, deleteId } from '../../../services/Service';
+import Postagem from '../../../models/Postagem';
 
 
 function DeletarPostagem() {
-  const [posts, setPosts] = useState<Post>();
+  const [posts, setPosts] = useState<Postagem>();
   const [token, setToken] = useLocalStorage("token");
   const { id } = useParams<{ id: string }>();
   let navigate = useNavigate();

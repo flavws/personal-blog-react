@@ -11,11 +11,11 @@ import {
 import { Box } from "@mui/material";
 import "./ListaPostagem.css";
 import useLocalStorage from "react-use-localstorage";
-import Post from "../../../models/Postagem";
 import { busca } from "../../../services/Service";
+import Postagem from "../../../models/Postagem";
 
 function ListaPostagem() {
-  const [posts, setPosts] = useState<Post[]>([]);
+  const [posts, setPosts] = useState<Postagem[]>([]);
   const [token, setToken] = useLocalStorage("token");
   let navigate = useNavigate();
 

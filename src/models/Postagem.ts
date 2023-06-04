@@ -1,10 +1,10 @@
 import Theme from "./Theme";
 
-interface Post {
+interface Postagem {
     id: number;
     title: string;
     text: string;
     theme?: Theme | null;
 }
 
-export default Post;
+export default Postagem;

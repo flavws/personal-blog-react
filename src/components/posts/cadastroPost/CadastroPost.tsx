@@ -14,12 +14,12 @@ import {
 import "./CadastroPost.css";
 import { useNavigate, useParams } from "react-router-dom";
 import useLocalStorage from "react-use-localstorage";
-import Post from "../../../models/Postagem";
 import Theme from "../../../models/Theme";
 import { busca, buscaId, put, post } from "../../../services/Service";
+import Postagem from "../../../models/Postagem";
 
 function CadastroPost() {
-  const [posts, setPosts] = useState<Post>({
+  const [posts, setPosts] = useState<Postagem>({
     id: 0,
     title: "",
     text: "",
