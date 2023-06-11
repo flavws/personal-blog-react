@@ -13,11 +13,15 @@ import "./ListaTema.css";
 import useLocalStorage from "react-use-localstorage";
 import Theme from "../../../models/Theme";
 import { busca } from "../../../services/Service";
+import { useSelector } from "react-redux";
+import { TokenState } from "../../../store/tokens/tokensReducer";
 
 
 function ListaTema() {
   const [themes, setThemes] = useState<Theme[]>([]);
-  const [token, setToken] = useLocalStorage("token");
+  const token = useSelector<TokenState, TokenState["tokens"]>(
+    (state) => state.tokens
+  );
   let navigate = useNavigate();
 
   useEffect(() => {

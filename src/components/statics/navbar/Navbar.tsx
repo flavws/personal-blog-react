@@ -19,15 +19,21 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import useLocalStorage from "react-use-localstorage";
+import { useSelector, useDispatch } from "react-redux";
+import { TokenState } from "../../../store/tokens/tokensReducer";
+import { addToken } from "../../../store/tokens/actions";
 
 const pages = ["home", "postagens", "temas", "cadastrar tema"];
 
 function Navbar() {
-  const [token, setToken] = useLocalStorage("token");
+  const token = useSelector<TokenState, TokenState["tokens"]>(
+    (state) => state.tokens
+  );
+  const dispatch = useDispatch();
   let navigate = useNavigate();
 
   function goLogout() {
-    setToken("");
+    dispatch(addToken(""));
     alert("Usuário deslogado");
     navigate("/login");
   }

@@ -5,13 +5,17 @@ import { useNavigate, useParams } from "react-router-dom";
 import useLocalStorage from "react-use-localstorage";
 import Theme from "../../../models/Theme";
 import { buscaId, put, post } from "../../../services/Service";
+import { useSelector } from "react-redux";
+import { TokenState } from "../../../store/tokens/tokensReducer";
 
 function CadastroTema() {
   const [themes, setThemes] = useState<Theme>({
     id: 0,
     description: "",
   });
-  const [token, setToken] = useLocalStorage("token");
+  const token = useSelector<TokenState, TokenState["tokens"]>(
+    (state) => state.tokens
+  );
   const { id } = useParams<{ id: string }>();
   let navigate = useNavigate();
 
@@ -46,7 +50,6 @@ function CadastroTema() {
     event.preventDefault();
 
     if (id !== undefined) {
-      console.log(themes);
       put(`/themes`, themes, setThemes, {
         headers: {
           Authorization: token,

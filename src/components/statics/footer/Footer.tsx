@@ -3,7 +3,14 @@ import { Box, Grid, Typography } from '@mui/material'
 import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import { useSelector, useDispatch } from 'react-redux';
+import { TokenState } from '../../../store/tokens/tokensReducer';
 function Footer(){
+    const token = useSelector<TokenState, TokenState["tokens"]>(
+        (state) => state.tokens
+      );
+      const dispatch = useDispatch();
+    
     return(
         <>
             <Grid container direction="row" justifyContent="center" alignItems="center">

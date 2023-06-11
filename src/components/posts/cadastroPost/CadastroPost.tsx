@@ -17,6 +17,9 @@ import useLocalStorage from "react-use-localstorage";
 import Theme from "../../../models/Theme";
 import { busca, buscaId, put, post } from "../../../services/Service";
 import Postagem from "../../../models/Postagem";
+import { useSelector } from "react-redux";
+import { TokenState } from "../../../store/tokens/tokensReducer";
+import User from "../../../models/User";
 
 function CadastroPost() {
   const [posts, setPosts] = useState<Postagem>({
@@ -24,13 +27,26 @@ function CadastroPost() {
     title: "",
     text: "",
     theme: null,
+    user: null
   });
   const [theme, setTheme] = useState<Theme>({
     id: 0,
     description: "",
   });
   const [themes, setThemes] = useState<Theme[]>([]);
-  const [token, setToken] = useLocalStorage("token");
+  const token = useSelector<TokenState, TokenState["tokens"]>(
+    (state) => state.tokens
+  );
+  const userId = useSelector<TokenState, TokenState["id"]>(
+    (state) => state.id
+  );
+  const [user, setUser] = useState<User>({
+    id: +userId,
+    name: '',
+    user: '',
+    password: '',
+    picture: ''
+  })
   const { id } = useParams<{ id: string }>();
   let navigate = useNavigate();
 
@@ -42,10 +58,13 @@ function CadastroPost() {
   }, ["token"]);
 
   useEffect(() => {
+    if (token == "") {
     setPosts({
       ...posts,
       theme: theme,
+      user: user
     });
+    }
   }, [theme]);
 
   useEffect(() => {

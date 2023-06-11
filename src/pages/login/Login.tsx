@@ -5,13 +5,23 @@ import "./Login.css";
 import UserLogin from "../../models/UserLogin";
 import { login } from "../../services/Service";
 import useLocalStorage from "react-use-localstorage";
+import { useDispatch } from "react-redux";
+import { addToken, addId } from "../../store/tokens/actions";
 
 function Login() {
   const navigate = useNavigate();
-
-  const [token, setToken] = useLocalStorage("token");
+  const dispatch = useDispatch();
+  const [token, setToken] = useState("");
 
   const [userLogin, setUserLogin] = useState<UserLogin>({
+    id: 0,
+    user: "",
+    password: "",
+    picture: "",
+    token: ""
+  });
+
+  const [respUserLogin, setRespUserLogin] = useState<UserLogin>({
     id: 0,
     user: "",
     password: "",
@@ -29,7 +39,7 @@ function Login() {
   async function onSubmit(event: ChangeEvent<HTMLFormElement>) {
     event.preventDefault();
     try {
-      await login("/users/login", userLogin, setToken);
+      await login("/users/login", userLogin, setRespUserLogin);
       alert("Usuario logado com sucesso");
     } catch (error) {
       alert("Usuário e/ou senha inválidos");
@@ -37,10 +47,12 @@ function Login() {
   }
 
   useEffect(() => {
-    if (token !== "") {
+    if (respUserLogin.token !== "") {
+      dispatch(addToken(respUserLogin.token));
+      dispatch(addId(respUserLogin.id.toString()));
       navigate("/home");
     }
-  }, [token]);
+  }, [respUserLogin.token]);
 
   return (
     <Grid container direction="row" justifyContent="center" alignItems="center">
